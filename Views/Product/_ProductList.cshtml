@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DotNETMVCProject.Models.Product>
+
+@foreach (var item in Model)
+{
+    <div class="col-12 col-lg-3 tradeButton">
+        <div class="divGeneralItem">
+            <div class="col-lg-12 col-8">
+                <div class="topInfo">
+                    <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="@Html.DisplayFor(modelItem => item.Name)" onclick="location.href='@Url.Action("About", "Home")';return false;" width="135" height="135">
+                    <span [ngClass]="col-lg-12 col-12">@Html.DisplayFor(modelItem => item.Name)</span>
+                    <div *ngIf="!changePrice" class="row mt-1">
+                        <span class="col-lg-12 col-12">@Html.DisplayFor(modelItem => item.Price)</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <a id="btn_add" href="@Url.Action("AddToCart", "Product",item)" class="col-5 btn btn-info cartButton">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Add
+                    </a>
+                    <a id="btn_add" href="@Url.Action("RemoveFromCart", "Product",item)" class="col-5 btn btn-danger cartButton">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Remove
+                    </a>
+                </div>
+                    @*<div class="col-lg-6 col-6">
+                <app-icon (click)="changePrice=true" [iconName]="'pencil'"></app-icon>
+                <app-icon (click)="deleteProduct(product)" [iconName]="'trash'"></app-icon>
+            </div>*@
+
+                    <!--<div *ngIf="changePrice" class="productTools row mt-1">
+        <input class="col-lg-7 col-6" type="text" #updateId placeholder="@Html.DisplayFor(modelItem => item.Price)">-->
+                    @*<div class]="mt-1">
+                <app-icon (click)="updateProductPrice(product, updateId.value)" [iconName]="'plus-square'"></app-icon>
+                <app-icon (click)="changePrice = false" [iconName]="'x-circle'"></app-icon>
+            </div>*@
+                    <!--</div>
+        <div class="col-lg-12 col-12">-->
+                    @*<div class="mt-1">
+                <app-icon (click)="productServ.addProductToCart(product)" [iconName]="'plus-square'" class="add"></app-icon>
+                <app-icon (click)="productServ.removeProductFromCart(product)" [iconName]="'x-circle'" class="remove"></app-icon>
+            </div>*@
+                    <!--</div>-->
+                </div>
+            </div>
+    </div>
+}
